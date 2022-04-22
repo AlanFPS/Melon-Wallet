@@ -1,0 +1,13 @@
+<h2>All rooms</h2>
+{{message}}
+{{#each allRooms}}
+  <img width="400" height="300" src="{{this.imageUrl}}" alt="room-pic" />
+  <p>{{this.name}}</p>
+  <p>{{this.description}}</p>
+  <h4>Reviews:</h4>
+  {{#each this.reviews}}
+    <h5>{{this.comment}}</h5>
+    <p>-{{this.user.fullName}}</p>
+  {{/each}}
+  <a href="/rooms/{{this._id}}/add-review">add a Review</a>
+{{/each}}

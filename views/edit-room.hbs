@@ -1,0 +1,13 @@
+<h2>Create a Room</h2>
+
+<form method="post" action="/rooms/{{foundRoom._id}}/edit">
+
+  <label>name</label>
+  <input name="name" value="{{foundRoom.name}}" />
+  <label>description</label>
+  <input name="description" value="{{foundRoom.description}}" />
+
+  <button type="submit">Create Room</button>
+</form>
+
+<p>{{message}}</p>

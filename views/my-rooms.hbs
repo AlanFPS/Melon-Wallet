@@ -1,0 +1,11 @@
+<h2>My rooms</h2>
+
+{{#each allRooms}}
+  <img width="400" height="300" src="{{this.imageUrl}}" alt="room-pic" />
+  <p>{{this.name}}</p>
+  <p>{{this.description}}</p>
+  <a href="/rooms/{{this._id}}/edit"> Edit room</a>
+  <form method="post" action="/rooms/{{this._id}}/delete">
+    <button type="submit">Delete room</button>
+  </form>
+{{/each}}
