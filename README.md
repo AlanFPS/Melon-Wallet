@@ -1,4 +1,4 @@
-![spiderman logo](https://imgur.com/VT4etI3.png)
+![walletmelon-logo](/assets/kittenmelon.png)
 
 # PROJECT #1 | The Game (Spider-Man by Alan Parasole Sanchez)
 
