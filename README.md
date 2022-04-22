@@ -1,6 +1,6 @@
 <p align="center"><img src="/assets/kittenmelonREADME.png"></p>
 
-# PROJECT #1 | The Game (Spider-Man by Alan Parasole Sanchez)
+# PROJECT #2 | Web App ('Melon Wallet' by Alan Parasole Sanchez)
 
 [Click here](https://alaanarg.github.io/Project1-TheGame-SpiderMan/) to play the game!
 
