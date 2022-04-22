@@ -1,4 +1,4 @@
-<p align="center">![walletmelon-logo](/assets/kittenmelonREADME.png)</p>
+<p align="center"><img src="/assets/kittenmelonREADME.png"></p>
 
 # PROJECT #1 | The Game (Spider-Man by Alan Parasole Sanchez)
 
