@@ -13,12 +13,17 @@ The application was built with Express, Node & MongoDB database. It also incorpo
 Exchange Rate API which renders based on user currency input into the database when they add
 a new transaction.
 
-<br>
-
 ### Home
+
 Picture of homepage.
 
-### 
+### Authentication
+
+User authentication built using Passport with Express. Uses encryption salts to hash user passwords for protection. The app also allows for scoial logins on both Facebook and Google. This allows the user an easiest and fastest way to log-in and use the app.
+
+### Views
+
+Landing page incorporates a video in a loop as well as the log-in and sign-up screens. Once logged in, users are taken to the main application page where they will be able to input their own data (both expenses and income) and save it. Also, they are are able to update or remove as well as reorder the data.
 
 
 **Have fun!** :heart:
