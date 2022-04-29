@@ -5,7 +5,7 @@ const redis = require('redis')
 const client =
   process.env.NODE_ENV === 'production'
     ? redis.createClient(
-        `redis://${process.env.REDIS_ENDPOINT_URI.replace(
+        `redis://${process.env.REDIS_ENDPOINT_URI?.replace(
           /^(redis\:\/\/)/,
           ''
         )}`,
