@@ -16,12 +16,12 @@ const SEED_USERS = [
   {
     name: 'test1',
     email: 'test@test.com',
-    password: '12345678'
+    password: 'asdasd'
   },
   {
     name: 'test2',
     email: 'test2@test.com',
-    password: '12345678'
+    password: 'asdasd'
   }
 ]
 

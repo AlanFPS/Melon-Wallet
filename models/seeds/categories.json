@@ -3,32 +3,32 @@
     {
       "type": "revenue",
       "name": "Revenue",
-      "icon": "fa-solid fa-money-check-alt"
+      "icon": "fas fa-money-check-alt"
     },
     {
       "type": "expense",
       "name": "Home",
-      "icon": "fa-solid fa-home"
+      "icon": "fas fa-home"
     },
     {
       "type": "expense",
       "name": "Transportation",
-      "icon": "fa-solid fa-shuttle-van"
+      "icon": "fas fa-shuttle-van"
     },
     {
       "type": "expense",
       "name": "Entertainment",
-      "icon": "fa-solid fa-grin-beam"
+      "icon": "fas fa-grin-beam"
     },
     {
       "type": "expense",
       "name": "Food",
-      "icon": "fa-solid fa-utensils"
+      "icon": "fas fa-utensils"
     },
     {
       "type": "expense",
       "name": "Other",
-      "icon": "fa-solid fa-pen"
+      "icon": "fas fa-pen"
     }
   ]
 }
