@@ -6,9 +6,9 @@
 
 You can use test user if you don't wanna register:
 ```
-email: user1@example.com/user2@example.com
-password: 12345678
-```
+email: test1@test.com
+password: asdasd
+``` 
 
 ## About
 
