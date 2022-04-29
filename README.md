@@ -1,4 +1,4 @@
-<p align="center"><img src="/assets/kittenmelonREADME.png"></p>
+<p align="center"><img src="/public/photos/kittenmelonREADME.png"></p>
 
 # Melon Wallet
 
@@ -6,7 +6,7 @@
 
 ## About
 
-**Melon Wallet** is a cute expenses & income tracker. I've always used different tools to keep
+**Melon Wallet** is a cute expense & income tracker. I've always used different tools to keep
 track of my finances, but I could never find something attractive and functional at the same time.
 
 The application was built with Express, Node & MongoDB database. It also incorporates an
