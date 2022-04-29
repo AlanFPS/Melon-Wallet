@@ -1,9 +1,20 @@
-var express = require('express');
-var router = express.Router();
+// Require Express and Express router
+const express = require('express')
+const router = express.Router()
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+const { authenticator } = require('../middleware/auth')
 
-module.exports = router;
+// Require modules
+const home = require('./modules/home')
+const records = require('./modules/records')
+const users = require('./modules/users')
+const auth = require('./modules/auth')
+
+// Direct to modules
+router.use('/records', authenticator, records)
+router.use('/users', users)
+router.use('/auth', auth)
+router.use('/', authenticator, home)
+
+// Export
+module.exports = router

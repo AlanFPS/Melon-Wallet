@@ -1,0 +1,146 @@
+<div class="row py-5">
+  <div class="col-md-11 mx-auto" style="max-width: 880px;">
+
+    {{#if beginner}}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      You don't have any record in this month yet. Try to <a href="/records/new?type={{type}}">add {{type}}</a> now
+      or choose another month to filter!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {{/if}}
+
+    {{#if noFilterResult}}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      No result found for the selected {{selectedDate}} {{selectedCategory}}. Try to use other month or category filter.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {{/if}}
+
+    {{!-- Filter --}}
+    <div class="mt-4">
+      <form action="/records/{{type}}"
+        class="input-group row {{#if (eq type 'expense')}}{{else}}d-flex justify-content-end{{/if}}"
+        onchange="submit();">
+
+        {{!-- Date --}}
+        <div class="col-sm-6 mb-3">
+          <select class="custom-select ml-2" name="date">
+            <option value="all">All Months</option>
+
+            {{#each monthOfYearSet}}
+            <option value="{{ this }}" {{#if (eq ../filterDate this)}}selected{{/if}}>{{ this }}</option>
+            {{/each}}
+          </select>
+        </div>
+
+        {{!-- Category --}}
+        {{#if (eq type 'expense')}}
+        <div class="col-sm-6">
+          <select class="custom-select ml-2" name="category">
+            <option value="" selected>All Categories</option>
+
+            {{#each categoryList}}
+            {{#if (eq this.type ../type)}}
+            <option value="{{ this.name }}" {{#if (eq ../selectedCategory this.name)}}selected{{/if}}>{{ this.name }}
+            </option>
+            {{/if}}
+            {{/each}}
+
+          </select>
+        </div>
+        {{/if}}
+
+      </form>
+    </div>
+
+
+    {{!-- Total amount --}}
+    <div class="mt-4 mb-3 mx-2 row">
+      <div class="col-md-3 text-center">
+        <h6 style=" color: #8c97a0;">Total {{type}}s:</h6>
+      </div>
+      <div class="col-md-5 text-info total-amount text-center">${{ totalAmount }}
+      </div>
+    </div>
+
+    <div class="mb-2 mt-5 d-flex justify-content-center">
+      <a class="btn btn-info" href="/records/new?type={{type}}">Add {{type}}</a>
+    </div>
+
+    {{!-- Record count --}}
+    <div class="mx-2 mb-3 d-flex justify-content-end">
+      <small style="font-weight:500">Found {{totalRecords}} {{type}}s</small>
+    </div>
+
+    {{!-- Render list --}}
+    <div class="mx-2">
+      {{#each records}}
+      <div class="row flex-md-nowrap py-2 record" style="margin: 0;">
+        {{!-- Icon --}}
+        <div class="col-2 d-flex justify-content-center align-items-center">
+          <i class="{{ this.category.icon }} fa-2x record-icon"></i>
+        </div>
+        {{!-- Name & date --}}
+        <div class="col-3 pl-3">
+          <h5 class="record-name">{{ this.name }}</h5>
+          <small>{{ this.date }}</small>
+        </div>
+        {{!-- Amount --}}
+        <div class="col-4 d-flex align-items-center justify-content-end">
+          <div class="d-flex flex-column align-items-end">
+            <h5 class="record-amount">${{#if (eq this.type 'expense')}}-{{/if}}{{ this.amount }}</h5>
+            <small class="text-muted">{{this.merchant}}</small>
+          </div>
+
+        </div>
+        {{!-- Buttons --}}
+        <div class="col-3 d-flex justify-content-center align-items-center">
+          <a href="/records/{{ this._id }}/edit?type={{../type}}" class="mr-2"><i class="fas fa-edit icon-edit"></i></a>
+          <form method="POST" action="/records/{{ this._id }}?_method=DELETE" class="record-delete"
+            onsubmit="return checkDelete()" style="margin: 0;">
+            <button type="submit" class="record-deleteBtn"><i class="fas fa-trash-alt icon-delete"></i></button>
+          </form>
+        </div>
+      </div>
+      {{/each}}
+
+      {{#if records.length}}
+      {{!-- Pagination --}}
+      <div id="pagination" class="d-flex justify-content-center mt-5">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item {{#if (eq pageNumber prev)}}disabled{{/if}}">
+              <a class="page-link"
+                href="/records/{{type}}?page={{prev}}&date={{selectedDate}}&category={{selectedCategory}}"
+                aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+            {{#each totalPage}}
+            {{#if (eq this ../pageNumber)}}
+            <li class="page-item active"><a class="page-link" href="#">{{this}}</a></li>
+            {{else}}
+            <li class="page-item"><a class="page-link"
+                href="/records/{{../type}}?page={{this}}&date={{../selectedDate}}&category={{../selectedCategory}}">{{this}}</a>
+            </li>
+            {{/if}}
+            {{/each}}
+            <li class="page-item {{#if (eq pageNumber next)}}disabled{{/if}}">
+              <a class="page-link"
+                href="/records/{{type}}?page={{next}}&date={{selectedDate}}&category={{selectedCategory}}"
+                aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      {{/if}}
+    </div>
+
+  </div>
+</div>

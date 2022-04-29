@@ -1,0 +1,172 @@
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+  <title>MELON Wallet - Finance Tracker</title>
+  {{! Bootstrap }}
+  <link rel='stylesheet' href='https://bootswatch.com/4/litera/bootstrap.min.css' crossorigin='anonymous' />
+  {{! Main css }}
+  <link rel='stylesheet' href='/stylesheets/main.css' />
+  {{! Index css }}
+  {{#if indexCSS}}
+  <link rel='stylesheet' href='/stylesheets/index.css' />
+  {{/if}}
+  {{! Form css }}
+  {{#if formCSS}}
+  <link rel='stylesheet' href='/stylesheets/form.css' />
+  {{/if}}
+  {{! Font awesome }}
+  <script src='https://kit.fontawesome.com/fc38f96ac0.js' crossorigin='anonymous'></script>
+  {{!-- NinjaChat --}}
+  <script>
+    setTimeout(function(){ 
+      (function(b, o, t, u, p, c){
+    d= o.createElement('div');
+    d.id= 'botup';
+  	c = o.getElementsByTagName('head')[0];
+  	p = o.createElement('script');
+  	p.async = 1;
+    p.id= 'botup-script';
+  	p.src = t + u;
+  	p.onload = function(){
+  		b._Botup.init('9771574071738506', '413', 'us1')
+  	};
+    o.lastChild.append(d);
+  	c.appendChild(p);
+  })(window, document, 'https://widgets.500apps.com/botup/', 'botupchat.js');
+  },2000);
+  </script>
+
+</head>
+
+<body>
+  <header>
+    {{! nav bar }}
+    <nav class='navbar navbar-expand-lg navbar-dark mx-3'>
+      {{! brand name }}
+      <div><img src="public/photos/kittenmelonREADME.png"
+          style="width: 200px;height: 200px;border-radius: 50%;box-shadow: 2px 3px 5px #495057eb;">
+      </div>
+      <a class='navbar-brand' href='/'>MELON Wallet - Finance Tracker</a>
+      {{! button }}
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        {{#if isAuthenticated}}
+        <ul class="navbar-nav d-flex align-items-center" style="list-style: none;margin: 0;">
+          <li class="nav-item {{#unless type}}active{{/unless}}">
+            <a class="nav-link" href="/">Overview <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{#if (eq type 'expense')}}active{{/if}}" href="/records/expense">Expense</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {{#if (eq type 'revenue')}}active{{/if}}" href="/records/revenue">Revenue</a>
+          </li>
+          {{!-- Dropdown avatar --}}
+          <div class="dropdown m-3 d-flex justify-content-end">
+            <a class=" dropdown-toggle" style="text-decoration: none;" href="#" role="button" id="dropdownMenuLink"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="{{user.avatar}}" style="height: 30px;width: 30px;border-radius: 10px; background: #e9ecef"
+                alt="">
+            </a>
+            <div class="dropdown-menu" style="position: absolute; top: 30px;left: -10px;min-width: 0.5rem;"
+              aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="/users/profile">Profile</a>
+              <a href='/users/logout' class='dropdown-item' id='loginBtn'>Logout</a>
+            </div>
+          </div>
+        </ul>
+        {{else}}
+        <a href='/users/login' class='btn btn-outline-primary' id='loginBtn'>Login</a>
+        {{/if}}
+      </div>
+
+    </nav>
+  </header>
+  <main>
+    <div class="row">
+
+      <div class='{{#if home}}col-12 col-xl-8{{else}}col-12{{/if}}' style="background: aliceblue;">
+        {{{body}}}
+      </div>
+
+      {{#if home}}
+      <div class="col-12 col-xl-4 py-5 pl-5 row" style="margin-left: 0.5rem;">
+        <div class="col-11 mx-auto" style=" margin: 0 auto; position:sticky; top: 50px;">
+          <div class="category-title mt-5">
+            <h5 class="" style="margin-left: -15px; font-weight: 600; font-size: 1.2rem;">
+              Expenses by Category
+            </h5>
+          </div>
+          <div class="row">
+            {{#unless selectedCategory}}
+            {{#unless (eq selectedDate 'all')}}
+            <div class="col-md-6 col-xl-12">
+              <div class="mx-auto" style="max-width: 400px;">
+                <canvas id="myChart" width="300" height="300"></canvas>
+              </div>
+            </div>
+            {{/unless}}
+            {{/unless}}
+
+            <div
+              class="category-container col-md-6 col-xl-12 {{#if selectedCategory}}mt-5{{/if}}{{#if (eq selectedDate 'all')}} mt-5{{/if}} ">
+              {{#each categoryList}}
+              {{#if (eq this.type 'expense')}}
+              <div class="category row mb-4 mx-auto">
+                <div class="category-icon col-2 d-flex justify-content-center"
+                  style="background: #4ccfe6;padding: 15px;border-radius: 10px; max-width: 50px;">
+                  <i class="{{ this.icon }} fa-lg record-icon" style="color: white;"></i>
+                </div>
+                <div class="category-info col-10 row d-flex align-items-center">
+                  <div class="col-12 col-sm-8 col-lg-8 col-xl-12" style="font-weight: 500;">{{ this.name }}</div>
+                  <div class="col-12 col-sm-4 col-lg-4 col-xl-12">${{ this.amount }}</div>
+                </div>
+              </div>
+              {{/if}}
+              {{/each}}
+            </div>
+          </div>
+
+        </div>
+      </div>
+      {{/if}}
+    </div>
+
+
+  </main>
+
+  {{!-- Data for Chart --}}
+  {{#if chart}}
+  {{!-- Category Dought Chart --}}
+  <span id="category-amount" style="display:none;" data-category="{{categoryAmount}}"></span>
+  <span id="category-name" style="display:none;" data-category="{{categoryName}}"></span>
+  {{!-- Budget Dought Chart --}}
+  <span id="budget-amount" style="display:none;" data-budget="{{budgetAmount}}"></span>
+
+  {{!-- Month Bar Chart --}}
+  <span id="month" style="display:none;" data-category="{{groupByMonth}}"></span>
+  <span id="month-amount" style="display:none;" data-category="{{amountByMonth}}"></span>
+  {{/if}}
+
+  {{! Bootstrap }}
+  <script src='https://code.jquery.com/jquery-3.5.1.slim.min.js'
+    integrity='sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj'
+    crossorigin='anonymous'></script>
+  <script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js'
+    integrity='sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns'
+    crossorigin='anonymous'></script>
+  {{! javascripts }}
+  <script src='/javascripts/utility.js'></script>
+  {{! chart }}
+  {{#if chart}}
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js'></script>
+  <script src="/javascripts/chart.js"></script>
+  {{/if}}
+</body>
+
+</html>

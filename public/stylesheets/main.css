@@ -1,0 +1,15 @@
+header {
+  background-color: #1c3869;
+}
+
+.container {
+  /* max-width: 720px; */
+}
+
+.navbar a {
+  color: white;
+}
+
+.dropdown-menu a {
+  color: #1c3869;
+}

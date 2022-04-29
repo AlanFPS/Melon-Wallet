@@ -1,0 +1,317 @@
+{
+  "results": [
+    {
+      "type": "revenue",
+      "name": "Salary",
+      "category": "Revenue",
+      "amount": 5000,
+      "date": "2022-03-01"
+    },
+    {
+      "type": "expense",
+      "name": "Tacos with Max",
+      "category": "Food",
+      "amount": 20,
+      "date": "2022-03-01",
+      "merchant": "Harbs"
+    },
+    {
+      "type": "expense",
+      "name": "Gas",
+      "category": "Transportation",
+      "amount": 30,
+      "date": "2022-03-01"
+    },
+    {
+      "type": "expense",
+      "name": "Nintedo Switch",
+      "category": "Entertainment",
+      "amount": 400,
+      "date": "2022-03-01",
+      "merchant": "GameStop"
+    },
+    {
+      "type": "expense",
+      "name": "Rental",
+      "category": "Home",
+      "amount": 1200,
+      "date": "2022-03-01"
+    },
+    {
+      "type": "expense",
+      "name": "Car parts",
+      "category": "Other",
+      "amount": 1500,
+      "date": "2022-03-01"
+    },
+    {
+      "type": "expense",
+      "name": "Bar with friends",
+      "category": "Food",
+      "amount": 90,
+      "date": "2022-03-01",
+      "merchant": "HardRock Casino"
+    },
+    {
+      "type": "revenue",
+      "name": "Sold crypto",
+      "category": "Revenue",
+      "amount": 500,
+      "date": "2022-03-01",
+      "merchant": "Binance"
+    },
+    {
+      "type": "expense",
+      "name": "Alfredo Pasta no chicken",
+      "category": "Food",
+      "amount": 50,
+      "date": "2022-03-01",
+      "merchant": "UberEats"
+    },
+    {
+      "type": "expense",
+      "name": "Uber",
+      "category": "Transportation",
+      "amount": 15,
+      "date": "2022-03-01"
+    },
+    {
+      "type": "expense",
+      "name": "Videogames",
+      "category": "Entertainment",
+      "amount": 280,
+      "date": "2022-04-01",
+      "merchant": "Nintendo Store"
+    },
+    {
+      "type": "expense",
+      "name": "Rental",
+      "category": "Home",
+      "amount": 1000,
+      "date": "2022-04-02"
+    },
+    {
+      "type": "expense",
+      "name": "Car loan",
+      "category": "Other",
+      "amount": 300,
+      "date": "2022-04-02"
+    },
+    {
+      "type": "expense",
+      "name": "Casino went crazy",
+      "category": "Entertainment",
+      "amount": 1900,
+      "date": "2022-04-03",
+      "merchant": "HardRock Seminole"
+    },
+    {
+      "type": "revenue",
+      "name": "Salary",
+      "category": "Revenue",
+      "amount": 4500,
+      "date": "2022-04-05"
+    },
+    {
+      "type": "expense",
+      "name": "Supermarket",
+      "category": "Food",
+      "amount": 180,
+      "date": "2022-04-05",
+      "merchant": "Publix"
+    },
+    {
+      "type": "expense",
+      "name": "Gas",
+      "category": "Transportation",
+      "amount": 30,
+      "date": "2022-04-05"
+    },
+    {
+      "type": "expense",
+      "name": "BTC purchase",
+      "category": "Other",
+      "amount": 290,
+      "date": "2022-04-15",
+      "merchant": "Binance"
+    },
+    {
+      "type": "revenue",
+      "name": "ETH sale",
+      "category": "Other",
+      "amount": 1500,
+      "date": "2022-04-21"
+    },
+    {
+      "type": "revenue",
+      "name": "Salary bonus",
+      "category": "Other",
+      "amount": 3000,
+      "date": "2022-04-22"
+    },
+    {
+      "type": "expense",
+      "name": "Supermarket",
+      "category": "Food",
+      "amount": 300,
+      "date": "2022-04-25",
+      "merchant": "Fresh Market"
+    },
+    {
+      "type": "expense",
+      "name": "PlayStation 5",
+      "category": "Expense",
+      "amount": 2500,
+      "date": "2022-04-25"
+    },
+    {
+      "type": "expense",
+      "name": "Pizza",
+      "category": "Food",
+      "amount": 10,
+      "date": "2022-04-25",
+      "merchant": "Papa John's"
+    },
+    {
+      "type": "expense",
+      "name": "Gas",
+      "category": "Transportation",
+      "amount": 30,
+      "date": "2022-04-25"
+    },
+    {
+      "type": "expense",
+      "name": "Car loan",
+      "category": "Entertainment",
+      "amount": 280,
+      "date": "2022-04-27",
+      "merchant": "Citibank"
+    },
+    {
+      "type": "expense",
+      "name": "Utilities",
+      "category": "Home",
+      "amount": 200,
+      "date": "2022-04-29"
+    },
+    {
+      "type": "expense",
+      "name": "Donation to Red Cross",
+      "category": "Other",
+      "amount": 100,
+      "date": "2022-04-30"
+    },
+    {
+      "type": "expense",
+      "name": "晚餐",
+      "category": "Food",
+      "amount": 1800,
+      "date": "2021-03-01",
+      "merchant": "響食天堂"
+    },
+    {
+      "type": "revenue",
+      "name": "salary",
+      "category": "Revenue",
+      "amount": 60,
+      "date": "2021-03-01"
+    },
+    {
+      "type": "expense",
+      "name": "早餐",
+      "category": "Food",
+      "amount": 60,
+      "date": "2022-03-01",
+      "merchant": "Harbs"
+    },
+    {
+      "type": "expense",
+      "name": "公車",
+      "category": "Transportation",
+      "amount": 30,
+      "date": "2022-03-01"
+    },
+    {
+      "type": "expense",
+      "name": "電影",
+      "category": "Entertainment",
+      "amount": 230,
+      "date": "2022-01-01",
+      "merchant": "信義威秀"
+    },
+    {
+      "type": "expense",
+      "name": "電費",
+      "category": "Home",
+      "amount": 1000,
+      "date": "2022-01-01"
+    },
+    {
+      "type": "expense",
+      "name": "秘密",
+      "category": "Other",
+      "amount": 10000,
+      "date": "2022-01-01"
+    },
+    {
+      "type": "expense",
+      "name": "晚餐",
+      "category": "Food",
+      "amount": 1800,
+      "date": "2021-03-01",
+      "merchant": "響食天堂"
+    },
+    {
+      "type": "revenue",
+      "name": "salary",
+      "category": "Revenue",
+      "amount": 60,
+      "date": "2021-03-01"
+    },
+    {
+      "type": "expense",
+      "name": "早餐",
+      "category": "Food",
+      "amount": 60,
+      "date": "2022-01-01",
+      "merchant": "Harbs"
+    },
+    {
+      "type": "expense",
+      "name": "公車",
+      "category": "Transportation",
+      "amount": 30,
+      "date": "2022-01-01"
+    },
+    {
+      "type": "expense",
+      "name": "電影",
+      "category": "Entertainment",
+      "amount": 230,
+      "date": "2022-05-21",
+      "merchant": "信義威秀"
+    },
+    {
+      "type": "expense",
+      "name": "電費",
+      "category": "Home",
+      "amount": 1000,
+      "date": "2022-05-21"
+    },
+    {
+      "type": "expense",
+      "name": "秘密",
+      "category": "Other",
+      "amount": 10000,
+      "date": "2022-05-21"
+    },
+    {
+      "type": "expense",
+      "name": "晚餐",
+      "category": "Food",
+      "amount": 1800,
+      "date": "2021-03-01",
+      "merchant": "響食天堂"
+    }
+  ]
+}

@@ -1,52 +1,98 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-const mongoose = require("mongoose");
+// Require packages
+const express = require('express')
+const session = require('express-session')
+const redis = require('redis')
+const client =
+  process.env.NODE_ENV === 'production'
+    ? redis.createClient(
+        `redis://${process.env.REDIS_ENDPOINT_URI.replace(
+          /^(redis\:\/\/)/,
+          ''
+        )}`,
+        { password: process.env.REDIS_PASSWORD }
+      )
+    : redis.createClient()
+const redisStore = require('connect-redis')(session)
+const exphbs = require('express-handlebars')
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-var roomsRouter = require("./routes/rooms");
+const flash = require('connect-flash')
+const methodOverride = require('method-override')
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
-var app = express();
-require("./config/session.config")(app);
+const routes = require('./routes')
 
-// view engine setup
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "hbs");
+const usePassport = require('./config/passport')
+require('./config/mongoose')
+require('./utils/handlebars-helper')
 
-app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+const PORT = process.env.PORT
+const app = express()
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
-app.use("/rooms", roomsRouter);
+// Set up template engine
+app.engine(
+  'hbs',
+  exphbs({
+    defaultLayout: 'main',
+    extname: '.hbs'
+  })
+)
+app.set('view engine', 'hbs')
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
-});
+// Handle session
+client.on('connect', function (err) {
+  if (err) {
+    console.log('Could not establish a connection with Redis. ' + err)
+  } else {
+    console.log('Connected to Redis successfully!')
+  }
+})
 
-// error handler
-app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
+app.use(
+  session({
+    store: new redisStore({ client }),
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      sameSite: true,
+      secure: false,
+      httpOnly: false
+    }
+  })
+)
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render("error");
-});
+// Set up body-parser
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-mongoose
-  .connect("mongodb://localhost/melonwallet")
-  .then((x) =>
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-  )
-  .catch((err) => console.error("Error connecting to mongo", err));
+// Set up method-override
+app.use(methodOverride('_method'))
 
-module.exports = app;
+// Set up static file
+app.use(express.static('public'))
+
+// Call passport function
+usePassport(app)
+
+// Use flash
+app.use(flash())
+
+// Add response local variables scoped to the request
+app.use((req, res, next) => {
+  res.locals.isAuthenticated = req.isAuthenticated()
+  res.locals.user = req.user
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.warning_msg = req.flash('warning_msg')
+  res.locals.error_msg = req.flash('error_msg')
+  next()
+})
+
+// Direct request to routes/index.js
+app.use(routes)
+
+// Start and listen on the Express server
+app.listen(PORT, () => {
+  console.log(`App is running on http://localhost:${PORT}`)
+})

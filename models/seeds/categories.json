@@ -1,0 +1,34 @@
+{
+  "results": [
+    {
+      "type": "revenue",
+      "name": "Revenue",
+      "icon": "fa-solid fa-money-check-alt"
+    },
+    {
+      "type": "expense",
+      "name": "Home",
+      "icon": "fa-solid fa-home"
+    },
+    {
+      "type": "expense",
+      "name": "Transportation",
+      "icon": "fa-solid fa-shuttle-van"
+    },
+    {
+      "type": "expense",
+      "name": "Entertainment",
+      "icon": "fa-solid fa-grin-beam"
+    },
+    {
+      "type": "expense",
+      "name": "Food",
+      "icon": "fa-solid fa-utensils"
+    },
+    {
+      "type": "expense",
+      "name": "Other",
+      "icon": "fa-solid fa-pen"
+    }
+  ]
+}
