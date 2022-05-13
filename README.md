@@ -15,7 +15,7 @@ password: asdasd
 **Melon Wallet** is a cute expense & income app to keep your daily expenses and revenue on record. I've always used different tools to keep
 track of my finances, but I could never find something attractive and functional at the same time.
 
-The application was built with Express, Node.js & MongoDB database. It also incorporates an Exchange Rate API which renders based on user currency input into the database when they add a new transaction.
+The application was built with ExpressJS, Node.js & MongoDB database. It also incorporates an Exchange Rate API which renders based on user currency input into the database when they add a new transaction.
 
 ### Home
 
